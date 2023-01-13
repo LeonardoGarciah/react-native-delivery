@@ -1,18 +1,22 @@
 import React, {useLayoutEffect} from 'react';
-import {Text, View} from "react-native";
+import { Text, View } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import {SafeAreaView} from "react-native-safe-area-context";
+import Header from "../components/Header/Header";
 
 const Home = () => {
     const navigation = useNavigation();
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle: 'TESTING'
+            headerShown: false,
         })
     }, [])
 
     return (
-        <Text className='text-red-300'>Teste</Text>
+        <SafeAreaView className='bg-white pt-4'>
+            <Header />
+        </SafeAreaView>
     )
 }
 
