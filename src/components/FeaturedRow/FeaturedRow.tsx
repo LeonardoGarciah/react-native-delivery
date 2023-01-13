@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, Text, View} from "react-native";
 import {ArrowRight} from "phosphor-react-native";
+import RestaurantCard from "../RestaurantCard/RestaurantCard";
 
 interface Props{
     title: string;
@@ -35,7 +36,18 @@ const FeaturedRow = (props: Props) => {
                 showsHorizontalScrollIndicator={false}
                 className='pt-4'
             >
-
+                <RestaurantCard
+                    id={123}
+                    imgUrl={'https://links.papareact.com/wru'}
+                    title="Baisul"
+                    rating={5}
+                    genre={'Brazil'}
+                    address={'123 teste'}
+                    short_description={'The best restaurant'}
+                    dishes={[]}
+                    long={20}
+                    lat={0}
+                />
             </ScrollView>
         </View>
     )
