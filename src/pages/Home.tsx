@@ -5,6 +5,7 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Categories from "../components/Categories/Categories";
+import FeaturedRow from "../components/FeaturedRow/FeaturedRow";
 
 const Home = () => {
     const navigation = useNavigation();
@@ -21,12 +22,18 @@ const Home = () => {
             <Search />
 
             <ScrollView
-                className='bg-gray-300'
+                className='bg-gray-100'
                 contentContainerStyle={{
                     paddingBottom: 100
                 }}
             >
                 <Categories />
+                <FeaturedRow
+                    id={123}
+                    title={"Teste"}
+                    dewscription={"Teste"}
+                    featuredCategory={"Featured"}
+                />
             </ScrollView>
         </SafeAreaView>
     )
