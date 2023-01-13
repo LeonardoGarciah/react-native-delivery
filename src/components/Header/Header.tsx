@@ -4,7 +4,7 @@ import {CaretDown, UserCircle} from "phosphor-react-native";
 
 const Header = ( ) => {
     return (
-        <View className='flex-row pb-3 items-center mx-4 space-x-2'>
+        <View className='flex-row pb-3 items-center mx-4 space-x-2 px-2'>
             <Image
                 source={{
                     uri: 'https://links.papareact.com/wru'
