@@ -29,7 +29,11 @@ const Routes = () => {
                     headerShown: false,
                 }}
             />
-            <Stack.Screen name="Delivery" component={Delivery} />
+            <Stack.Screen name="Delivery" component={Delivery}
+              options={{
+                  headerShown: false,
+              }}
+            />
         </Stack.Navigator>
     )
 }
