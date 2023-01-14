@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from "react-native-safe-area-context";
 import {ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {apiGetRestaurantsByCategory} from "../http/httpGet";
+import {apiGetFeaturedCategoriesById, apiGetRestaurantsByCategory} from "../http/httpGet";
 import RestaurantByCategoryCard from "../components/RestauratnsByCategory/RestaurantByCategoryCard";
 import {ArrowLeft} from "phosphor-react-native";
 import {Screens} from "../Routes/Routes";
 
 const RestaurantsByCategory = () => {
-    const { params: { category } } = useRoute();
+    const { params: { category, featuredId, title } } = useRoute();
     const [restaurants, setRestaurants] = useState([]);
 
     const navigation = useNavigation();
@@ -49,9 +49,15 @@ const RestaurantsByCategory = () => {
     }
 
     useEffect(() => {
-        apiGetRestaurantsByCategory(category).then((data) => {
-            setRestaurants(data);
-        })
+        if (featuredId) {
+            apiGetFeaturedCategoriesById(featuredId).then((data) => {
+                setRestaurants(data.restaurants)
+            })
+        } else {
+            apiGetRestaurantsByCategory(category).then((data) => {
+                setRestaurants(data);
+            })
+        }
     }, [])
 
     return (
@@ -63,7 +69,7 @@ const RestaurantsByCategory = () => {
                     <ArrowLeft color='#00CCBB' size={30} />
                 </TouchableOpacity>
                 <Text className='font-light text-[#00CCBB] text-lg'>
-                    {category}
+                    {category || title}
                 </Text>
             </View>
             <ScrollView>
