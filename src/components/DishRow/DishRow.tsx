@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import Dish from "../../interfaces/Dish";
 import CurrencyFormat from 'react-currency-format';
-import {urlFor} from "../../../sanity";
+import {urlFor} from "../../http/sanity";
 import Currency from "../../utils/Currency";
 import {MinusCircle, PlusCircle} from "phosphor-react-native";
 import {useDispatch, useSelector} from "react-redux";

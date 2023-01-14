@@ -6,7 +6,8 @@ import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Categories from "../components/Categories/Categories";
 import FeaturedRow from "../components/FeaturedRow/FeaturedRow";
-import sanityClient from "../../sanity";
+import sanityClient from "../http/sanity";
+import {apiGetFeaturedCategories} from "../http/httpGet";
 
 const Home = () => {
     const [featuredCategories, setFeaturedCategories] = useState([]);
@@ -20,17 +21,7 @@ const Home = () => {
     }, [])
 
     useEffect(() => {
-        sanityClient.fetch(`
-            *[_type == "featured"] {
-              ...,
-              restaurants[]->{
-                dishes[]->,
-                type->{
-                  name
-                }
-              }
-            }
-        `).then((data) => {
+        apiGetFeaturedCategories().then((data) => {
             setFeaturedCategories(data);
         })
     }, [])

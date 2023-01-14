@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image} from "react-native";
-import {urlFor} from "../../../sanity";
+import {urlFor} from "../../http/sanity";
 
 interface Props{
     url: string;

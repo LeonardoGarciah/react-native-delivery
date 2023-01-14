@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from "react-native";
 import CategoryCard from "./CategoryCard";
-import sanityClient, {urlFor} from "../../../sanity";
-import * as url from "url";
+import {urlFor} from "../../http/sanity";
+import {apiGetCategories} from "../../http/httpGet";
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        sanityClient.fetch(`
-            *[_type == "category"]
-        `).then((data) => {
+        apiGetCategories().then((data) => {
             setCategories(data)
         })
     }, [])

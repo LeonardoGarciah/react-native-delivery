@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {MapPin, Star} from "phosphor-react-native";
-import {urlFor} from "../../../sanity";
+import {urlFor} from "../../http/sanity";
 import {useNavigation} from "@react-navigation/native";
 import IRestaurant from "../../interfaces/Restaurant";
 import {Screens} from "../../Routes/Routes";

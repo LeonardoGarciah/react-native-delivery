@@ -17,11 +17,6 @@ const Delivery = () => {
         navigation.navigate(Screens.HOME);
     }
 
-    console.log({
-        latitude: restaurant.lat,
-        longitude: restaurant.long,
-    })
-
     return (
         <View className='bg-[#00CCBB] flex-1'>
             <SafeAreaView>

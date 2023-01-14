@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Cart from "../pages/Cart";
 import AwaitingRestaurant from "../pages/AwaitingRestaurant";
 import Delivery from "../pages/Delivery";
+import RestaurantsByCategory from "../pages/RestaurantsByCategory";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ export enum Screens {
     CART = "Cart",
     AWAITING_RESTAURANT = "AwaitingRestaurant",
     DELIVERY = "Delivery",
+    RESTAURANT_BY_CATEGORY = "RestaurantByCategory"
 }
 const Routes = () => {
     return (
@@ -30,6 +32,11 @@ const Routes = () => {
                 }}
             />
             <Stack.Screen name="Delivery" component={Delivery}
+              options={{
+                  headerShown: false,
+              }}
+            />
+            <Stack.Screen name="RestaurantByCategory" component={RestaurantsByCategory}
               options={{
                   headerShown: false,
               }}

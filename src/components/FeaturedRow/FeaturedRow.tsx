@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from "react-native";
 import {ArrowRight} from "phosphor-react-native";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
-import sanityClient from "../../../sanity";
+import sanityClient from "../../http/sanity";
+import {apiGetFeaturedCategoriesById} from "../../http/httpGet";
 
 interface Props{
     title: string;
@@ -15,18 +16,7 @@ const FeaturedRow = (props: Props) => {
     const [restaurants, setRestaurants] = useState([]);
 
     useEffect(() => {
-        sanityClient.fetch(`
-            *[_type == "featured" && _id == $id] {
-              ...,
-              restaurants[]->{
-                ...,
-                dishes[]->,
-                type-> {
-                    name
-                },
-            }
-            }[0]
-        `, { id }).then((data) => {
+        apiGetFeaturedCategoriesById(id).then((data) => {
             setRestaurants(data.restaurants);
         })
     }, [])

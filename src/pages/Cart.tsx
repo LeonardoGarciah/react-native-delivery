@@ -6,15 +6,15 @@ import {selectRestaurant} from "../redux/slices/restaurantSlice";
 import {selectCartItems} from "../redux/slices/cartSlice";
 import {SafeAreaView} from "react-native-safe-area-context";
 import {XCircle} from "phosphor-react-native";
-import {urlFor} from "../../sanity";
+import {urlFor} from "../http/sanity";
 import GroupedItem from "../components/Cart/GroupedItem";
 import CartFooter from "../components/Cart/CartFooter";
+import {Screens} from "../Routes/Routes";
 
 const Cart = () => {
     const navigation = useNavigation();
     const restaurant = useSelector(selectRestaurant);
     const items = useSelector(selectCartItems);
-    const dispatch = useDispatch();
 
     const groupedItemsInCart = useMemo(() => {
         const groupedItems = items.reduce((results, item) => {
@@ -25,7 +25,6 @@ const Cart = () => {
         return groupedItems;
     }, [items])
 
-    console.log(groupedItemsInCart)
     const handleClose = () => {
         navigation.goBack();
     }
@@ -48,6 +47,12 @@ const Cart = () => {
             )
         })
     }
+
+    useEffect(() => {
+        if (!items.length) {
+            navigation.navigate(Screens.HOME);
+        }
+    }, [items])
 
     return (
         <SafeAreaView className='flex-1 bg-white'>
