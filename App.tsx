@@ -4,6 +4,9 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 import Home from "./src/pages/Home";
 import Restaurant from "./src/pages/Restaurant";
+import {Provider} from "react-redux";
+import {store} from "./src/redux/store";
+import React from 'react';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,10 +17,12 @@ export enum Screens {
 export default function App() {
   return (
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Restaurant" component={Restaurant} />
-        </Stack.Navigator>
+        <Provider store={store}>
+            <Stack.Navigator>
+              <Stack.Screen name="Home" component={Home} />
+              <Stack.Screen name="Restaurant" component={Restaurant} />
+            </Stack.Navigator>
+        </Provider>
       </NavigationContainer>
   );
 }

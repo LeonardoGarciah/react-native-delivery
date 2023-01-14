@@ -6,6 +6,7 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {urlFor} from "../../sanity";
 import {ArrowLeft, CaretRight, CircleWavyQuestion, MapPin, Star} from "phosphor-react-native";
 import Dish from "../interfaces/Dish";
+import DishRow from "../components/DishRow/DishRow";
 
 const Restaurant = () => {
     const { params: {
