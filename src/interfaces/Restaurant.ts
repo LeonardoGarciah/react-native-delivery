@@ -1,3 +1,5 @@
+import Dish from "./Dish";
+import {ICategory} from "./Category";
 
 export default interface IRestaurant {
     id: number;
@@ -7,7 +9,8 @@ export default interface IRestaurant {
     genre: string;
     address: string;
     short_description: string;
-    dishes: string[];
+    dishes: Dish[];
     long: number;
     lat: number;
+    type: ICategory;
 }

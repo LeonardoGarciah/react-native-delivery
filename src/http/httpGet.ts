@@ -1,6 +1,9 @@
 import sanityClient from "./sanity";
+import {IFeatured} from "../interfaces/Featured";
+import IRestaurant from "../interfaces/Restaurant";
+import {ICategory} from "../interfaces/Category";
 
-export const apiGetFeaturedCategories = async () => {
+export const apiGetFeaturedCategories = async (): Promise<IFeatured> => {
     const response = await sanityClient.fetch(`
             *[_type == "featured"] {
               ...,
@@ -16,7 +19,7 @@ export const apiGetFeaturedCategories = async () => {
     return response;
 }
 
-export const apiGetFeaturedCategoriesById = async (id: string) => {
+export const apiGetFeaturedCategoriesById = async (id: string): Promise<IFeatured> => {
     const response = await sanityClient.fetch(`
             *[_type == "featured" && _id == $id] {
               ...,
@@ -33,7 +36,7 @@ export const apiGetFeaturedCategoriesById = async (id: string) => {
     return response;
 }
 
-export const apiGetCategories = async () => {
+export const apiGetCategories = async (): Promise<ICategory> => {
     const response = await sanityClient.fetch(`
             *[_type == "category"]
     `)
@@ -41,7 +44,7 @@ export const apiGetCategories = async () => {
     return response;
 }
 
-export const apiGetRestaurantsByCategory = async (type: string) => {
+export const apiGetRestaurantsByCategory = async (type: string): Promise<IRestaurant> => {
     const response = await sanityClient.fetch(`
             *[_type == "restaurant" && type->name == $type] {
               ...,

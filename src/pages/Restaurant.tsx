@@ -1,9 +1,7 @@
 import React, {useEffect, useLayoutEffect} from 'react';
-import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
+import {ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation, useRoute} from '@react-navigation/native'
-import IRestaurant from "../interfaces/Restaurant";
 import {SafeAreaView} from "react-native-safe-area-context";
-import {urlFor} from "../http/sanity";
 import {ArrowLeft, CaretRight, CircleWavyQuestion, MapPin, Star} from "phosphor-react-native";
 import Dish from "../interfaces/Dish";
 import DishRow from "../components/DishRow/DishRow";

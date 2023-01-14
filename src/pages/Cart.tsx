@@ -39,7 +39,7 @@ const Cart = () => {
             return (
                 <GroupedItem
                     id={key}
-                    length={items.length}
+                    length={items?.length}
                     name={name}
                     imgUrl={image}
                     price={price}
