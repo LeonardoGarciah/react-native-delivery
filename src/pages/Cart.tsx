@@ -39,7 +39,7 @@ const Cart = () => {
 
             return (
                 <GroupedItem
-                    key={key}
+                    id={key}
                     length={items.length}
                     name={name}
                     imgUrl={image}

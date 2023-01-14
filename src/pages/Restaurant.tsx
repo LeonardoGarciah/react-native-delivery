@@ -66,7 +66,9 @@ const Restaurant = () => {
             rating,
             genre,
             short_description,
-            address
+            address,
+            long,
+            lat
         }))
     }, [])
 

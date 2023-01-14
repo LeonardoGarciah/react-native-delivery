@@ -6,22 +6,22 @@ import {useDispatch} from "react-redux";
 import {removeFromCart} from "../../redux/slices/cartSlice";
 
 interface Props{
-    key: string;
+    id: string;
     length: number;
     name: string;
     imgUrl: string;
     price: number;
 }
 const GroupedItem = (props: Props) => {
-    const {length, key, imgUrl, name, price} = props;
+    const {length, id, imgUrl, name, price} = props;
 
     const dispatch = useDispatch();
     const removeItemFrontCart = () => {
-        dispatch(removeFromCart({ id: key }))
+        dispatch(removeFromCart({ id: id }))
     }
 
     return (
-        <View key={key} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
+        <View key={id} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
             <Text className='text-[#00CCBB]'>{length} x</Text>
             <DeliveryImage
                 url={imgUrl}
