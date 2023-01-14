@@ -7,21 +7,12 @@ import Restaurant from "./src/pages/Restaurant";
 import {Provider} from "react-redux";
 import {store} from "./src/redux/store";
 import React from 'react';
-
-const Stack = createNativeStackNavigator();
-
-export enum Screens {
-    HOME = "Home",
-    RESTAURANT = "Restaurant"
-}
+import Routes from "./src/Routes/Routes";
 export default function App() {
   return (
       <NavigationContainer>
         <Provider store={store}>
-            <Stack.Navigator>
-              <Stack.Screen name="Home" component={Home} />
-              <Stack.Screen name="Restaurant" component={Restaurant} />
-            </Stack.Navigator>
+            <Routes />
         </Provider>
       </NavigationContainer>
   );

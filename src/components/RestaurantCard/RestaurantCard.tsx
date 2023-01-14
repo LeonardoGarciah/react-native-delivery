@@ -3,8 +3,9 @@ import {Image, Text, TouchableOpacity, View} from "react-native";
 import {MapPin, Star} from "phosphor-react-native";
 import {urlFor} from "../../../sanity";
 import {useNavigation} from "@react-navigation/native";
-import {Screens} from "../../../App";
 import IRestaurant from "../../interfaces/Restaurant";
+import {Screens} from "../../Routes/Routes";
+import DeliveryImage from "../DeliveryImage/DeliveryImage";
 
 interface Props extends IRestaurant{
 }
@@ -29,10 +30,8 @@ const RestaurantCard = (props: Props) => {
             onPress={navigateToRestaurant}
             className='bg-white mr-4 shadow'
         >
-            <Image
-                source={{
-                    uri: urlFor(imgUrl).url(),
-                }}
+            <DeliveryImage
+                url={imgUrl}
                 className='h-36 w-64 rounded-sm'
             />
             <View className='px-2 pb-4'>

@@ -35,8 +35,6 @@ const FeaturedRow = (props: Props) => {
         return restaurants.map((restaurant) => {
             const { _id, image, address, name, dishes, rating, short_description, type, long, lat } = restaurant;
 
-            console.log(restaurant)
-
             return (
                 <RestaurantCard
                     key={_id}

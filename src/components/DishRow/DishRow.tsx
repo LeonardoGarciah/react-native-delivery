@@ -7,6 +7,7 @@ import Currency from "../../utils/Currency";
 import {MinusCircle, PlusCircle} from "phosphor-react-native";
 import {useDispatch, useSelector} from "react-redux";
 import {addToCart, removeFromCart, selectCartItems, selectCartItemsWithId} from "../../redux/slices/cartSlice";
+import DeliveryImage from "../DeliveryImage/DeliveryImage";
 interface Props extends Dish{
     id: string;
     description: string;
@@ -53,11 +54,9 @@ const DishRow = (props: Props) => {
                    </View>
 
                     <View>
-                        <Image
+                        <DeliveryImage
                             className='h-20 w-20 bg-gray-300 p-4'
-                            source={{
-                                uri: urlFor(image).url()
-                            }}
+                            url={image}
                         />
                     </View>
                 </View>

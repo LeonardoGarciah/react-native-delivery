@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useEffect, useLayoutEffect} from 'react';
 import {Image, ScrollView, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation, useRoute} from '@react-navigation/native'
 import IRestaurant from "../interfaces/Restaurant";
@@ -7,6 +7,10 @@ import {urlFor} from "../../sanity";
 import {ArrowLeft, CaretRight, CircleWavyQuestion, MapPin, Star} from "phosphor-react-native";
 import Dish from "../interfaces/Dish";
 import DishRow from "../components/DishRow/DishRow";
+import CartIcon from "../components/CartIcon/CartIcon";
+import {useDispatch} from "react-redux";
+import {setRestaurant} from "../redux/slices/restaurantSlice";
+import DeliveryImage from "../components/DeliveryImage/DeliveryImage";
 
 const Restaurant = () => {
     const { params: {
@@ -23,6 +27,8 @@ const Restaurant = () => {
     } } = useRoute();
 
     const navigation = useNavigation();
+
+    const dispatch = useDispatch();
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -51,14 +57,26 @@ const Restaurant = () => {
         })
     }
 
+    useEffect(() => {
+        dispatch(setRestaurant({
+            id,
+            title,
+            dishes,
+            imgUrl,
+            rating,
+            genre,
+            short_description,
+            address
+        }))
+    }, [])
+
     return (
-        <SafeAreaView>
+        <SafeAreaView className='flex-1'>
+            <CartIcon />
             <ScrollView>
                 <View className='relative'>
-                    <Image
-                        source={{
-                            uri: urlFor(imgUrl).url()
-                        }}
+                    <DeliveryImage
+                        url={imgUrl}
                         className='w-full h-56 bg-gray-300 p-4'
                     />
                     <TouchableOpacity
@@ -101,7 +119,7 @@ const Restaurant = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View>
+                <View className='pb-36'>
                     <Text className='px-4 pt-6 mb-3 font-bold text-xl'>
                         Menu
                     </Text>
