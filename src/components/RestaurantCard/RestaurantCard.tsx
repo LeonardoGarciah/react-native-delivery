@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {MapPin, Star} from "phosphor-react-native";
+import {urlFor} from "../../../sanity";
 
 interface Props{
     id: number;
@@ -21,7 +22,7 @@ const RestaurantCard = (props: Props) => {
         <TouchableOpacity className='bg-white mr-4 shadow'>
             <Image
                 source={{
-                    uri: 'https://links.papareact.com/wru'
+                    uri: urlFor(imgUrl).url(),
                 }}
                 className='h-36 w-64 rounded-sm'
             />

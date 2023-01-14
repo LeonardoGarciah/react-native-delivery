@@ -1,15 +1,53 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from "react-native";
 import {ArrowRight} from "phosphor-react-native";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
+import sanityClient from "../../../sanity";
 
 interface Props{
     title: string;
-    dewscription: string;
-    featuredCategory: string;
+    description: string;
+    id: string;
 }
 const FeaturedRow = (props: Props) => {
-    const { featuredCategory, title, dewscription } = props;
+    const { id, title, description } = props;
+
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        sanityClient.fetch(`
+            *[_type == "featured" && _id == $id] {
+              ...,
+              restaurants[]->,
+            }[0]
+        `, { id }).then((data) => {
+            setRestaurants(data.restaurants);
+        })
+    }, [])
+
+    const renderRestaurants = () => {
+        return restaurants.map((restaurant) => {
+            const { _id, image, address, name, dishes, rating, short_description, type, long, lat } = restaurant;
+
+            console.log(restaurant)
+
+            return (
+                <RestaurantCard
+                    key={_id}
+                    id={_id}
+                    imgUrl={image}
+                    title={name}
+                    rating={rating}
+                    genre={type.name}
+                    address={address}
+                    short_description={short_description}
+                    dishes={dishes}
+                    long={long}
+                    lat={lat}
+                />
+            )
+        })
+    }
 
     return (
         <View>
@@ -25,7 +63,7 @@ const FeaturedRow = (props: Props) => {
             <Text
                 className='text-xs text-gray-500 px-4'
             >
-                {dewscription}
+                {description}
             </Text>
 
             <ScrollView
@@ -36,18 +74,7 @@ const FeaturedRow = (props: Props) => {
                 showsHorizontalScrollIndicator={false}
                 className='pt-4'
             >
-                <RestaurantCard
-                    id={123}
-                    imgUrl={'https://links.papareact.com/wru'}
-                    title="Baisul"
-                    rating={5}
-                    genre={'Brazil'}
-                    address={'123 teste'}
-                    short_description={'The best restaurant'}
-                    dishes={[]}
-                    long={20}
-                    lat={0}
-                />
+                {renderRestaurants()}
             </ScrollView>
         </View>
     )
