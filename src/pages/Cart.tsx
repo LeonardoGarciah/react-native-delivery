@@ -35,6 +35,7 @@ const Cart = () => {
             console.log("items[0]", items);
             const { name, image, price } = items[0];
 
+            console.log(key)
 
             return (
                 <GroupedItem

@@ -3,9 +3,16 @@ import {Text, TouchableOpacity, View} from "react-native";
 import {useSelector} from "react-redux";
 import {selectCartTotal} from "../../redux/slices/cartSlice";
 import Currency from "../../utils/Currency";
+import {useNavigation} from "@react-navigation/native";
+import {Screens} from "../../Routes/Routes";
 
 const CartFooter = () => {
     const cartTotal = useSelector(selectCartTotal);
+
+    const navigation = useNavigation();
+    const handleNavigateToAwaitingRestaurant = () => {
+        navigation.navigate(Screens.AWAITING_RESTAURANT)
+    }
 
     return (
         <View className='p-5 bg-white mt-5 space-y-4'>
@@ -31,6 +38,7 @@ const CartFooter = () => {
             </View>
 
             <TouchableOpacity
+                onPress={handleNavigateToAwaitingRestaurant}
                 className='rounded-lg bg-[#00CCBB] p-4'
             >
                 <Text className='text-center text-white text-lg font-bold'>

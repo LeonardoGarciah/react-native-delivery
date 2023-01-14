@@ -6,10 +6,11 @@ import {useDispatch} from "react-redux";
 import {removeFromCart} from "../../redux/slices/cartSlice";
 
 interface Props{
-    key: number;
+    key: string;
     length: number;
     name: string;
     imgUrl: string;
+    price: number;
 }
 const GroupedItem = (props: Props) => {
     const {length, key, imgUrl, name, price} = props;
