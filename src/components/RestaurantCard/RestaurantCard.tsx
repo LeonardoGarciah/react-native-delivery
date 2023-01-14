@@ -2,24 +2,33 @@ import React from 'react';
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {MapPin, Star} from "phosphor-react-native";
 import {urlFor} from "../../../sanity";
+import {useNavigation} from "@react-navigation/native";
+import {Screens} from "../../../App";
+import IRestaurant from "../../interfaces/Restaurant";
 
-interface Props{
-    id: number;
-    imgUrl: string;
-    title: string;
-    rating: number;
-    genre: string;
-    address: string;
-    short_description: string;
-    dishes: string[];
-    long: number;
-    lat: number;
+interface Props extends IRestaurant{
 }
+
 const RestaurantCard = (props: Props) => {
-    const { lat, dishes, address, id, title, long, imgUrl, short_description, rating, genre } = props;
+    const {
+        address,
+        title,
+        imgUrl,
+        rating,
+        genre
+    } = props;
+
+    const navigation = useNavigation();
+
+    const navigateToRestaurant = () => {
+        navigation.navigate(Screens.RESTAURANT, props);
+    }
 
     return (
-        <TouchableOpacity className='bg-white mr-4 shadow'>
+        <TouchableOpacity
+            onPress={navigateToRestaurant}
+            className='bg-white mr-4 shadow'
+        >
             <Image
                 source={{
                     uri: urlFor(imgUrl).url(),
