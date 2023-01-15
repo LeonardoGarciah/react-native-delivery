@@ -18,7 +18,7 @@ const Delivery = () => {
     }
 
     return (
-        <View className='bg-[#00CCBB] flex-1'>
+        <View className='bg-primary flex-1'>
             <SafeAreaView>
                 <View className='flex-row justify-between items-center p-4'>
                     <TouchableOpacity
@@ -89,7 +89,7 @@ const Delivery = () => {
                     <Text className='text-gray-400'>Seu entregador</Text>
                 </View>
 
-                <Text className='text-[#00CCBB] text-lg mr-5 font-bold'>Ligar</Text>
+                <Text className='text-primary text-lg mr-5 font-bold'>Ligar</Text>
             </SafeAreaView>
         </View>
     )

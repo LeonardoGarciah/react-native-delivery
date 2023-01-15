@@ -22,7 +22,7 @@ const GroupedItem = (props: Props) => {
 
     return (
         <View key={id} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
-            <Text className='text-[#00CCBB]'>{length} x</Text>
+            <Text className='text-primary'>{length} x</Text>
             <DeliveryImage
                 url={imgUrl}
                 className='h-12 w-12 rounded-full'
@@ -35,7 +35,7 @@ const GroupedItem = (props: Props) => {
 
             <TouchableOpacity>
                 <Text
-                    className='text-[#00CCBB] text-xs'
+                    className='text-primary text-xs'
                     onPress={removeItemFrontCart}
                 >
                     Remover

@@ -68,7 +68,7 @@ const RestaurantsByCategory = () => {
                 >
                     <ArrowLeft color='#00CCBB' size={30} />
                 </TouchableOpacity>
-                <Text className='font-light text-[#00CCBB] text-lg'>
+                <Text className='font-light text-primary text-lg'>
                     {category || title}
                 </Text>
             </View>

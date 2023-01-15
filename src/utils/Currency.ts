@@ -1,7 +1,7 @@
 
 const Currency = {
     currencyFormat(value: number) {
-        return `R$ ${value.toFixed(2).replace(".", ",")}`
+        return `R$ ${Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}`;
     }
 }
 

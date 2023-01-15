@@ -80,7 +80,7 @@ const Cart = () => {
                     />
                     <Text className='flex-1'>Entrega entre 10-20 min</Text>
                     <TouchableOpacity>
-                        <Text className="text-[#00CCBB]">Trocar</Text>
+                        <Text className="text-primary">Trocar</Text>
                     </TouchableOpacity>
                 </View>
 

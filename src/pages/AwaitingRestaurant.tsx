@@ -15,7 +15,7 @@ const AwaitingRestaurant = () => {
     }, [])
 
     return (
-        <SafeAreaView className='bg-[#00CCBB] flex-1 justify-center items-center'>
+        <SafeAreaView className='bg-primary flex-1 justify-center items-center'>
             <Animatable.Image
                 source={require("../../assets/loading.gif")}
                 animation="slideInUp"

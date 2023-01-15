@@ -23,7 +23,7 @@ const CartIcon = () => {
         <View className='absolute bottom-10 w-full z-50'>
             <TouchableOpacity
                 onPress={handleNavigationToCart}
-                className='mx-5 bg-[#00CCBB] p-4 rounded-lg flex-row items-center space-x-1'
+                className='mx-5 bg-primary p-4 rounded-lg flex-row items-center space-x-1'
             >
                 <ShoppingCart color='#00CCBB' size={30} />
                 <Text className='text-white font-extrabold text-lg bg-[#01A296] py-1 px-2'>{items.length}</Text>
