@@ -11,4 +11,6 @@ export type signInServiceImplTypes = {
         email: string,
         password: string,
     ) => Promise<UserCredential>)
+
+    logout: (() => void);
 }

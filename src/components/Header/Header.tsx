@@ -1,8 +1,17 @@
 import React from 'react';
-import {Image, Text, View} from "react-native";
+import {Image, Text, TouchableOpacity, View} from "react-native";
 import {CaretDown, UserCircle} from "phosphor-react-native";
+import {useNavigation} from "@react-navigation/native";
+import {Screens} from "../../Routes/Routes";
 
 const Header = ( ) => {
+
+    const navigation = useNavigation();
+
+    const handleGoToProfile = () => {
+        navigation.navigate(Screens.PROFILE);
+    }
+
     return (
         <View className='flex-row pb-3 items-center mx-4 space-x-2 px-2'>
             <Image
@@ -19,7 +28,9 @@ const Header = ( ) => {
                     <CaretDown size={20} color='#00CCBB'/>
                 </Text>
             </View>
-            <UserCircle size={32} color='#00CCBB' />
+            <TouchableOpacity onPress={handleGoToProfile}>
+                <UserCircle size={32} color='#00CCBB' />
+            </TouchableOpacity>
         </View>
     )
 }

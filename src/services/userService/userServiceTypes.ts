@@ -17,4 +17,6 @@ export type userServiceTypes = {
         createUserWithEmailAndPassword: ((auth: Auth, email: string, password: string) => Promise<UserCredential>),
     ) => Promise<UserCredential>),
 
+    logout: ((auth: Auth) => void);
+
 }

@@ -11,6 +11,7 @@ import RegisterUser from "../pages/RegisterUser";
 import {auth} from "../lib/firebase";
 import firebase from "firebase/compat";
 import User = firebase.User;
+import Profile from "../pages/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export enum Screens {
     RESTAURANT_BY_CATEGORY = "RestaurantByCategory",
     LOGIN = "Login",
     REGISTER_USER = "Register",
+    PROFILE = "Profile",
 }
 const Routes = () => {
     const [ user, setUser ] = useState<User>();
@@ -42,6 +44,9 @@ const Routes = () => {
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Restaurant" component={Restaurant} />
                 <Stack.Screen name="Cart" component={Cart}
+                    options={{presentation: 'modal', headerShown: false}}
+                />
+                <Stack.Screen name="Profile" component={Profile}
                     options={{presentation: 'modal', headerShown: false}}
                 />
                 <Stack.Screen name="AwaitingRestaurant" component={AwaitingRestaurant}

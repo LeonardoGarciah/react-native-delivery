@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {useSelector} from "react-redux";
@@ -8,14 +8,40 @@ import {Screens} from "../Routes/Routes";
 import {XCircle} from "phosphor-react-native";
 import * as Progress from 'react-native-progress';
 import MapView, {Marker} from "react-native-maps";
+import * as Location from 'expo-location';
 
 const Delivery = () => {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
 
     const handleNavigateToHome = () => {
         navigation.navigate(Screens.HOME);
     }
+
+    useEffect(() => {
+        (async () => {
+
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            let location = await Location.getCurrentPositionAsync({});
+            setLocation(location);
+        })();
+    }, []);
+
+    let text = 'Waiting..';
+    if (errorMsg) {
+        text = errorMsg;
+    } else if (location) {
+        text = JSON.stringify(location);
+    }
+    console.log(text);
+    // -27.7631759,-48.5251216
 
     return (
         <View className='bg-primary flex-1'>
@@ -64,15 +90,16 @@ const Delivery = () => {
                 className='flex-1 -mt-10 -z-30'
                 mapType='mutedStandard'
             >
-                <Marker
-                    key={restaurant.id}
-                    coordinate={{
-                        latitude: restaurant.lat,
-                        longitude: restaurant.long,
-                    }}
-                    title={restaurant.title}
-                    description={restaurant.short_description}
-                />
+
+                {/*<Marker*/}
+                {/*    key={restaurant.id}*/}
+                {/*    coordinate={{*/}
+                {/*        latitude: restaurant.lat,*/}
+                {/*        longitude: restaurant.long,*/}
+                {/*    }}*/}
+                {/*    title={restaurant.title}*/}
+                {/*    description={restaurant.short_description}*/}
+                {/*/>*/}
             </MapView>
 
             <SafeAreaView className='bg-white flex-row space-x-5 h-28'>

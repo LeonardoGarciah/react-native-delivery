@@ -3,7 +3,7 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {Text, TouchableOpacity, View} from "react-native";
 import DeliveryInput from "../components/DeliveryInput/DeliveryInput";
 import DeliveryButton from "../components/DeliveryButton/DeliveryButton";
-import userServiceImpl from "../serviceImplementation/signInServiceImpl/userServiceImpl";
+import userServiceImpl from "../serviceImplementation/userServiceImpl/userServiceImpl";
 import {ArrowLeft, Lightning} from "phosphor-react-native";
 import {useNavigation} from "@react-navigation/native";
 import feedbackServiceImpl from "../serviceImplementation/feedbackServiceImpl/feedbackServiceImpl";
