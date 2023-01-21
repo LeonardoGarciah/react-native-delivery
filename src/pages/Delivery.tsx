@@ -7,14 +7,16 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import {Screens} from "../Routes/Routes";
 import {XCircle} from "phosphor-react-native";
 import * as Progress from 'react-native-progress';
-import MapView, {Marker} from "react-native-maps";
+import MapView, {Marker, Polyline} from "react-native-maps";
 import * as Location from 'expo-location';
+import {apiMapsGetDeliveryRoute} from "../http/mapsGet";
 
 const Delivery = () => {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [deliveryWaypoints, setDeliveryWaypoints] = useState([]);
 
     const handleNavigateToHome = () => {
         navigation.navigate(Screens.HOME);
@@ -29,10 +31,12 @@ const Delivery = () => {
                 return;
             }
 
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
+            let locationResponse = await Location.getCurrentPositionAsync({});
+            console.log(locationResponse);
+            setLocation(location.coords);
         })();
     }, []);
+    console.log("location", location)
 
     let text = 'Waiting..';
     if (errorMsg) {
@@ -40,8 +44,33 @@ const Delivery = () => {
     } else if (location) {
         text = JSON.stringify(location);
     }
-    console.log(text);
-    // -27.7631759,-48.5251216
+
+    const getDeliveryRoute = async () => {
+        const response = await apiMapsGetDeliveryRoute([
+            [location.longitude, location.latitude],
+            [restaurant.long, restaurant.lat],
+        ])
+        const waypoints = response.data.routes[0].legs[0].steps.flatMap((step) => {
+            return step.intersections.map((intersection) => {
+                return intersection.location;
+            })
+        })
+        setDeliveryWaypoints(waypoints);
+    }
+
+    const waypointMapFormatter = (waypoints: []) => {
+        return waypoints.map((waypoint) => {
+          return { latitude: waypoint[1], longitude: waypoint[0] }
+        })
+    }
+    //
+    useEffect(() => {
+        if (location) {
+            getDeliveryRoute();
+        }
+    }, [location])
+
+    console.log(deliveryWaypoints.length)
 
     return (
         <View className='bg-primary flex-1'>
@@ -100,6 +129,19 @@ const Delivery = () => {
                 {/*    title={restaurant.title}*/}
                 {/*    description={restaurant.short_description}*/}
                 {/*/>*/}
+                <Polyline
+                    coordinates={waypointMapFormatter(deliveryWaypoints)}
+                    strokeColor="#00CCBB" // fallback for when `strokeColors` is not supported by the map-provider
+                    strokeColors={[
+                        '#7F0000',
+                        '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
+                        '#B24112',
+                        '#E5845C',
+                        '#238C23',
+                        '#7F0000'
+                    ]}
+                    strokeWidth={6}
+                />
             </MapView>
 
             <SafeAreaView className='bg-white flex-row space-x-5 h-28'>
