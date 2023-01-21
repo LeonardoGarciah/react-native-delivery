@@ -32,7 +32,6 @@ const Login = () => {
 
         userServiceImpl.signIn(email, password).then((resp) => {
             feedbackServiceImpl.showToast("Entrou com sucesso!", toast);
-            console.log(resp);
         }).catch((err) => {
             feedbackServiceImpl.showToast("Email ou senha inválida!", toast);
             console.log(err.code);

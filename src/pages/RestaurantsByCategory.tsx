@@ -14,7 +14,6 @@ const RestaurantsByCategory = () => {
     const navigation = useNavigation();
     const renderRestaurantsByCategory = () => {
 
-        console.log(!restaurants)
         if (!restaurants.length) {
             return (
                 <Text className='text-gray-400 text-xl text-center p-12'>Nenhum restaurante encontrado para a categoria {category}</Text>
@@ -23,7 +22,6 @@ const RestaurantsByCategory = () => {
 
         return restaurants.map((restaurant) => {
             const { _id, image, address, name, dishes, rating, short_description, type, long, lat, price } = restaurant;
-            console.log(restaurant);
 
             return (
                 <RestaurantByCategoryCard

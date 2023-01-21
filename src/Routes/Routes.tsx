@@ -83,7 +83,6 @@ const Routes = () => {
         )
     }
 
-    console.log(user);
     return user ? authorizedRoute() : unauthorizedRoutes();
 }
 

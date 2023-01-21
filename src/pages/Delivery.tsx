@@ -8,69 +8,34 @@ import {Screens} from "../Routes/Routes";
 import {XCircle} from "phosphor-react-native";
 import * as Progress from 'react-native-progress';
 import MapView, {Marker, Polyline} from "react-native-maps";
-import * as Location from 'expo-location';
-import {apiMapsGetDeliveryRoute} from "../http/mapsGet";
+import mapServiceImpl from "../serviceImplementation/mapServiceImpl/mapServiceImpl";
+import mapUtils from "../utils/MapUtils";
 
 const Delivery = () => {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
     const [location, setLocation] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
     const [deliveryWaypoints, setDeliveryWaypoints] = useState([]);
 
     const handleNavigateToHome = () => {
         navigation.navigate(Screens.HOME);
     }
 
-    useEffect(() => {
-        (async () => {
-
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
-
-            let locationResponse = await Location.getCurrentPositionAsync({});
-            console.log(locationResponse);
-            setLocation(location.coords);
-        })();
-    }, []);
-    console.log("location", location)
-
-    let text = 'Waiting..';
-    if (errorMsg) {
-        text = errorMsg;
-    } else if (location) {
-        text = JSON.stringify(location);
-    }
-
     const getDeliveryRoute = async () => {
-        const response = await apiMapsGetDeliveryRoute([
-            [location.longitude, location.latitude],
-            [restaurant.long, restaurant.lat],
-        ])
-        const waypoints = response.data.routes[0].legs[0].steps.flatMap((step) => {
-            return step.intersections.map((intersection) => {
-                return intersection.location;
-            })
-        })
-        setDeliveryWaypoints(waypoints);
+        const response = await mapServiceImpl.getDeliveryRoute(restaurant, location);
+        console.log("response", response)
+        setDeliveryWaypoints(response);
     }
 
-    const waypointMapFormatter = (waypoints: []) => {
-        return waypoints.map((waypoint) => {
-          return { latitude: waypoint[1], longitude: waypoint[0] }
-        })
+    const requestUserLocation = async () => {
+        const { response } = await mapServiceImpl.getUserLocation();
+        setLocation(response.coords);
+        getDeliveryRoute();
     }
-    //
+
     useEffect(() => {
-        if (location) {
-            getDeliveryRoute();
-        }
-    }, [location])
-
-    console.log(deliveryWaypoints.length)
+        requestUserLocation();
+    }, []);
 
     return (
         <View className='bg-primary flex-1'>
@@ -119,18 +84,8 @@ const Delivery = () => {
                 className='flex-1 -mt-10 -z-30'
                 mapType='mutedStandard'
             >
-
-                {/*<Marker*/}
-                {/*    key={restaurant.id}*/}
-                {/*    coordinate={{*/}
-                {/*        latitude: restaurant.lat,*/}
-                {/*        longitude: restaurant.long,*/}
-                {/*    }}*/}
-                {/*    title={restaurant.title}*/}
-                {/*    description={restaurant.short_description}*/}
-                {/*/>*/}
                 <Polyline
-                    coordinates={waypointMapFormatter(deliveryWaypoints)}
+                    coordinates={mapUtils.waypointMapFormatter(deliveryWaypoints)}
                     strokeColor="#00CCBB" // fallback for when `strokeColors` is not supported by the map-provider
                     strokeColors={[
                         '#7F0000',

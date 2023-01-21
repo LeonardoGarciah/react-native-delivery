@@ -37,10 +37,8 @@ const RegisterUser = () => {
         userServiceImpl.registerUser(email, password).then((resp) => {
             feedbackServiceImpl.showToast("Registrado com sucesso!", toast);
             handleNavigationToHome();
-            console.log(resp);
         }).catch((err) => {
             feedbackServiceImpl.showToast("Email ou senha incorreta!", toast);
-            console.log(err.code);
         })
     }
 
