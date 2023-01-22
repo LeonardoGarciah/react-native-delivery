@@ -1,5 +1,5 @@
-import Dish from "./Dish";
-import {ICategory} from "./Category";
+import Dish from './Dish';
+import {ICategory} from './Category';
 
 export default interface IRestaurant {
     id: number;

@@ -1,15 +1,13 @@
 import React from 'react';
-import {IInputProps, Input} from "native-base";
+import {IInputProps, Input} from 'native-base';
 
-interface Props extends IInputProps {
-
-}
+type Props = IInputProps
 const DeliveryInput = (props: Props) => {
-    const { ...rest } = props;
+	const { ...rest } = props;
 
-    return (
-        <Input borderColor='#00CCBB' className='w-full text-sm' {...rest} />
-    )
-}
+	return (
+		<Input borderColor='#00CCBB' className='w-full text-sm' {...rest} />
+	);
+};
 
 export default DeliveryInput;

@@ -1,5 +1,5 @@
-import IRestaurant from "./Restaurant";
-import {ICategory} from "./Category";
+import IRestaurant from './Restaurant';
+import {ICategory} from './Category';
 
 export interface IFeatured {
     _id: string;

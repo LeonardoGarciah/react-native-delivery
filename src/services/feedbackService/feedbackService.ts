@@ -1,12 +1,12 @@
-import {FeedbackServiceTypes} from "./feedbackServiceTypes";
+import {FeedbackServiceTypes} from './feedbackServiceTypes';
 
 const feedbackService: FeedbackServiceTypes = {
-    showToast(message, toast){
-        toast.show({
-            title: message,
-            placement: "top"
-        })
-    }
-}
+	showToast(message, toast){
+		toast.show({
+			title: message,
+			placement: 'top'
+		});
+	}
+};
 
 export default feedbackService;

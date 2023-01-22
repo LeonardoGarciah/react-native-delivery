@@ -1,4 +1,4 @@
-import IRestaurant from "../../interfaces/Restaurant";
+import IRestaurant from '../../interfaces/Restaurant';
 
 export type MapServiceTypes = {
     getUserLocation: ((location: any) => Promise<{ success: boolean, response: any}>),

@@ -5,6 +5,7 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "lint": "eslint --ext .tsx --ext .ts src/",
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
@@ -39,6 +40,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.32.0",
+    "eslint-plugin-react": "^7.32.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "react-native-dotenv": "^3.4.7"
   },
   "private": true

@@ -1,4 +1,4 @@
-import firebase from "firebase/compat";
+import firebase from 'firebase/compat';
 import Auth = firebase.auth.Auth;
 import UserCredential = firebase.auth.UserCredential;
 
