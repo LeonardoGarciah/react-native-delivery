@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import Dish from '../../interfaces/Dish';
-import CurrencyFormat from 'react-currency-format';
-import {urlFor} from '../../http/sanity';
 import Currency from '../../utils/Currency';
 import {MinusCircle, PlusCircle} from 'phosphor-react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart, removeFromCart, selectCartItems, selectCartItemsWithId} from '../../redux/slices/cartSlice';
 import DeliveryImage from '../DeliveryImage/DeliveryImage';
+import Colors from "../../shared/Colors";
+
 interface Props extends Dish{
     id: string;
     description: string;
@@ -70,7 +70,7 @@ const DishRow = (props: Props) => {
 							onPress={removeItemFromCart}
 						>
 							<MinusCircle
-								color={items.length > 0 ? '#00CCBB' : 'gray'}
+								color={items.length > 0 ? Colors.primary : 'gray'}
 								size={40}
 							/>
 						</TouchableOpacity>
@@ -81,7 +81,7 @@ const DishRow = (props: Props) => {
 							onPress={addItemToCart}
 						>
 							<PlusCircle
-								color="#00CCBB"
+								color={Colors.primary}
 								size={40}
 							/>
 						</TouchableOpacity>

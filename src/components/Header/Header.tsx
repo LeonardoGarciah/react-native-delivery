@@ -3,6 +3,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {CaretDown, UserCircle} from 'phosphor-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Screens} from '../../Routes/Routes';
+import Colors from "../../shared/Colors";
 
 const Header = ( ) => {
 
@@ -22,14 +23,14 @@ const Header = ( ) => {
 			/>
 
 			<View className='flex-1'>
-				<Text className='font-bold text-gray-400 text-xs'> Delivery now!</Text>
+				<Text className='font-bold text-gray-400 text-xs'> Entrega agora!</Text>
 				<Text className='font-bold text-xl'>
                     Localização atual
-					<CaretDown size={20} color='#00CCBB'/>
+					<CaretDown size={20} color={Colors.primary}/>
 				</Text>
 			</View>
 			<TouchableOpacity onPress={handleGoToProfile}>
-				<UserCircle size={32} color='#00CCBB' />
+				<UserCircle size={32} color={Colors.primary} />
 			</TouchableOpacity>
 		</View>
 	);

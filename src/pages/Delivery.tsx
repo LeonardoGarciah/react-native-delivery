@@ -10,6 +10,7 @@ import * as Progress from 'react-native-progress';
 import MapView, {Marker, Polyline} from 'react-native-maps';
 import mapServiceImpl from '../serviceImplementation/mapServiceImpl/mapServiceImpl';
 import mapUtils from '../utils/MapUtils';
+import Colors from "../shared/Colors";
 
 const Delivery = () => {
 	const restaurant = useSelector(selectRestaurant);
@@ -66,7 +67,7 @@ const Delivery = () => {
 						/>
 					</View>
 
-					<Progress.Bar size={30} color='#00CCBB' indeterminate={true}/>
+					<Progress.Bar size={30} color={Colors.primary} indeterminate={true}/>
 
 					<Text className='mt-3 text-gray-500'>
                         Seu pedido no restaurante {restaurant.title} está sendo preparado!
@@ -86,10 +87,10 @@ const Delivery = () => {
 			>
 				<Polyline
 					coordinates={mapUtils.waypointMapFormatter(deliveryWaypoints)}
-					strokeColor="#00CCBB" // fallback for when `strokeColors` is not supported by the map-provider
+					strokeColor={Colors.primary}
 					strokeColors={[
 						'#7F0000',
-						'#00000000', // no color, creates a "long" gradient between the previous and next coordinate
+						'#00000000',
 						'#B24112',
 						'#E5845C',
 						'#238C23',

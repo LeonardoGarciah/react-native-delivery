@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Screens} from '../Routes/Routes';
 import feedbackServiceImpl from '../serviceImplementation/feedbackServiceImpl/feedbackServiceImpl';
 import {useToast} from 'native-base';
+import Colors from "../shared/Colors";
 
 const Login = () => {
 	const [email, setEmail] = useState('');
@@ -45,7 +46,7 @@ const Login = () => {
 	return (
 		<SafeAreaView className='flex-1'>
 			<View className='flex-1 items-center justify-center p-4 space-y-6'>
-				<Lightning color='#00CCBB' size={100} />
+				<Lightning color={Colors.primary} size={100} />
 				<Text className='text-2xl text-primary font-extrabold'>Bem-vindo ao Ninja Delivery</Text>
 				<View className='w-full'>
 					<DeliveryInput

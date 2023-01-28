@@ -9,6 +9,7 @@ import CartIcon from '../components/CartIcon/CartIcon';
 import {useDispatch} from 'react-redux';
 import {setRestaurant} from '../redux/slices/restaurantSlice';
 import DeliveryImage from '../components/DeliveryImage/DeliveryImage';
+import Colors from "../shared/Colors";
 
 const Restaurant = () => {
 	const { params: {
@@ -83,7 +84,7 @@ const Restaurant = () => {
 						onPress={goBack}
 						className='absolute top-4 left-4 p-2 bg-gray-100 rounded-full'
 					>
-						<ArrowLeft size={20} color="#00CCBB" />
+						<ArrowLeft size={20} color={Colors.primary} />
 					</TouchableOpacity>
 				</View>
 
@@ -92,9 +93,9 @@ const Restaurant = () => {
 						<Text className='text-3xl font-bold'>{title}</Text>
 						<View className='flex-row space-x-2 my-1'>
 							<View className='flex-row items-center space-x-1'>
-								<Star color='green' size={22} />
+								<Star color={Colors.primary} size={22} />
 								<Text className='text-xs text-gray-500'>
-									<Text className='text-green-500'>{rating}</Text>
+									<Text className='text-primary'>{rating}</Text>
                                     - {genre}
 								</Text>
 							</View>
@@ -115,7 +116,7 @@ const Restaurant = () => {
 						<Text className='pl-2 flex-1 text-md font-bold'>
                             Tem alergia a algum alimento?
 						</Text>
-						<CaretRight color='#00CCBB' />
+						<CaretRight color={Colors.primary} />
 					</TouchableOpacity>
 				</View>
 

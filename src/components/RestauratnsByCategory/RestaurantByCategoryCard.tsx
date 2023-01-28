@@ -6,6 +6,7 @@ import {MapPin, Star} from 'phosphor-react-native';
 import IRestaurant from '../../interfaces/Restaurant';
 import {Screens} from '../../Routes/Routes';
 import {useNavigation} from '@react-navigation/native';
+import Colors from "../../shared/Colors";
 
 type Props = IRestaurant
 const RestaurantByCategoryCard = (props: Props) => {
@@ -26,9 +27,9 @@ const RestaurantByCategoryCard = (props: Props) => {
 				<View className='flex-1 pr-2'>
 					<Text className='text-lg mb-1'>{title}</Text>
 					<View className='flex-row items-center space-x-1'>
-						<Star color='green' size={22} />
+						<Star color={Colors.primary} size={22} />
 						<Text className='text-xs text-gray-500'>
-							<Text className='text-green-500'>
+							<Text className='text-primary'>
 								{rating}
 							</Text> - {genre}
 						</Text>

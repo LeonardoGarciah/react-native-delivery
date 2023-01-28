@@ -6,6 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import IRestaurant from '../../interfaces/Restaurant';
 import {Screens} from '../../Routes/Routes';
 import DeliveryImage from '../DeliveryImage/DeliveryImage';
+import Colors from "../../shared/Colors";
 
 type Props = IRestaurant
 
@@ -40,9 +41,9 @@ const RestaurantCard = (props: Props) => {
 					{title}
 				</Text>
 				<View className='flex-row items-center space-x-1'>
-					<Star color='green' size={22} />
+					<Star color={Colors.primary} size={22} />
 					<Text className='text-xs text-gray-500'>
-						<Text className='text-green-500'>
+						<Text className='text-primary'>
 							{rating}
 						</Text> - {genre}
 					</Text>

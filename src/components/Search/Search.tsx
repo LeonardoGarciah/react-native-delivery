@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
 import {FadersHorizontal, MagnifyingGlass} from 'phosphor-react-native';
+import Colors from "../../shared/Colors";
 
 const Search = () => {
 	return (
@@ -13,7 +14,7 @@ const Search = () => {
 				/>
 			</View>
 
-			<FadersHorizontal color='#00CCBB' />
+			<FadersHorizontal color={Colors.primary} />
 		</View>
 	);
 };

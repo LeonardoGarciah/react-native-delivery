@@ -10,6 +10,7 @@ import {urlFor} from '../http/sanity';
 import GroupedItem from '../components/Cart/GroupedItem';
 import CartFooter from '../components/Cart/CartFooter';
 import {Screens} from '../Routes/Routes';
+import Colors from "../shared/Colors";
 
 const Cart = () => {
 	const navigation = useNavigation();
@@ -54,7 +55,7 @@ const Cart = () => {
 	return (
 		<SafeAreaView className='flex-1 bg-white'>
 			<View className='flex-1 bg-gray-100'>
-				<View className='p-5 border-b border-[#00CCBB] bg-white shadow-xs'>
+				<View className={`p-5 border-b border-[${Colors.primary}] bg-white shadow-xs`}>
 					<View>
 						<Text className='text-lg font-bold text-center'>Carrinho</Text>
 						<Text className='text-center text-gray-400'>{restaurant.title}</Text>
@@ -64,7 +65,7 @@ const Cart = () => {
 						onPress={handleClose}
 						className='rounded-full bg-gray-100 absolute top-2 right-4'
 					>
-						<XCircle color='#00CCBB' size={50} />
+						<XCircle color={Colors.primary} size={50} />
 					</TouchableOpacity>
 				</View>
 

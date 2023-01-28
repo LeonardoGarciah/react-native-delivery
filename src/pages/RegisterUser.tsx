@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import feedbackServiceImpl from '../serviceImplementation/feedbackServiceImpl/feedbackServiceImpl';
 import {useToast} from 'native-base';
 import {Screens} from '../Routes/Routes';
+import Colors from "../shared/Colors";
 
 const RegisterUser = () => {
 	const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const RegisterUser = () => {
 				<ArrowLeft size={20} color="white" />
 			</TouchableOpacity>
 			<View className='flex-1 items-center justify-center p-4 space-y-6'>
-				<Lightning color='#00CCBB' size={100} />
+				<Lightning color={Colors.primary} size={100} />
 				<Text className='text-2xl text-primary font-extrabold'>Cadastra-se no Ninja Delivery</Text>
 				<View className='w-full'>
 					<DeliveryInput

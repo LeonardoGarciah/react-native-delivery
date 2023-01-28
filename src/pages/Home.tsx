@@ -1,5 +1,5 @@
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {RefreshControl, ScrollView, Text, View} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Header from '../components/Header/Header';
@@ -12,6 +12,7 @@ import {IFeatured} from '../interfaces/Featured';
 
 const Home = () => {
 	const [featuredCategories, setFeaturedCategories] = useState<IFeatured[]>([]);
+	const [refreshing, setRefreshing] = React.useState(false);
 
 	const navigation = useNavigation();
 
@@ -21,10 +22,23 @@ const Home = () => {
 		});
 	}, []);
 
-	useEffect(() => {
+	const findFeaturedCategories = () => {
 		apiGetFeaturedCategories().then((data) => {
 			setFeaturedCategories(data);
 		});
+	}
+
+	useEffect(() => {
+		findFeaturedCategories();
+	}, []);
+
+
+	const onRefresh = React.useCallback(() => {
+		setRefreshing(true);
+		findFeaturedCategories();
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 2000);
 	}, []);
 
 	const renderFeaturedRows = () => {
@@ -53,6 +67,9 @@ const Home = () => {
 				contentContainerStyle={{
 					paddingBottom: 100
 				}}
+				refreshControl={
+					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+				}
 			>
 				<Categories />
 

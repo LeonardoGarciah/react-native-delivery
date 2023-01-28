@@ -6,6 +6,7 @@ import sanityClient from '../../http/sanity';
 import {apiGetFeaturedCategoriesById} from '../../http/httpGet';
 import {Screens} from '../../Routes/Routes';
 import {useNavigation} from '@react-navigation/native';
+import Colors from "../../shared/Colors";
 
 interface Props{
     title: string;
@@ -28,7 +29,6 @@ const FeaturedRow = (props: Props) => {
 	const renderRestaurants = () => {
 		return restaurants.map((restaurant) => {
 			const { _id, image, address, name, dishes, rating, short_description, type, long, lat } = restaurant;
-
 
 			return (
 				<RestaurantCard
@@ -63,7 +63,7 @@ const FeaturedRow = (props: Props) => {
 					>
 						{title}
 					</Text>
-					<ArrowRight color='#00CCBB' />
+					<ArrowRight color={Colors.primary} />
 				</View>
 			</TouchableOpacity>
 
