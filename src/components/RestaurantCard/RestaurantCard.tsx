@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import IRestaurant from '../../interfaces/Restaurant';
 import {Screens} from '../../Routes/Routes';
 import DeliveryImage from '../DeliveryImage/DeliveryImage';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 type Props = IRestaurant
 

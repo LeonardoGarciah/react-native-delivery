@@ -6,7 +6,7 @@ import {MapPin, Star} from 'phosphor-react-native';
 import IRestaurant from '../../interfaces/Restaurant';
 import {Screens} from '../../Routes/Routes';
 import {useNavigation} from '@react-navigation/native';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 type Props = IRestaurant
 const RestaurantByCategoryCard = (props: Props) => {

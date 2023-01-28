@@ -10,7 +10,7 @@ import * as Progress from 'react-native-progress';
 import MapView, {Marker, Polyline} from 'react-native-maps';
 import mapServiceImpl from '../serviceImplementation/mapServiceImpl/mapServiceImpl';
 import mapUtils from '../utils/MapUtils';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const Delivery = () => {
 	const restaurant = useSelector(selectRestaurant);

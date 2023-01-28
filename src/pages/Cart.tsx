@@ -10,7 +10,7 @@ import {urlFor} from '../http/sanity';
 import GroupedItem from '../components/Cart/GroupedItem';
 import CartFooter from '../components/Cart/CartFooter';
 import {Screens} from '../Routes/Routes';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const Cart = () => {
 	const navigation = useNavigation();
@@ -36,6 +36,7 @@ const Cart = () => {
 
 			return (
 				<GroupedItem
+					key={key}
 					id={key}
 					length={items?.length}
 					name={name}

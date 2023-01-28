@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, View} from 'react-native';
 import {FadersHorizontal, MagnifyingGlass} from 'phosphor-react-native';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 const Search = () => {
 	return (

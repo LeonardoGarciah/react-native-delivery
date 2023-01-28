@@ -26,7 +26,7 @@ const Home = () => {
 		apiGetFeaturedCategories().then((data) => {
 			setFeaturedCategories(data);
 		});
-	}
+	};
 
 	useEffect(() => {
 		findFeaturedCategories();

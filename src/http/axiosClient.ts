@@ -13,7 +13,6 @@ const httpClient: HttpClientTypes = {
 		return `https://router.project-osrm.org${url}`;
 	},
 
-	// @ts-ignore
 	buildHeaders() {
 		const headers = {
 			headers: {

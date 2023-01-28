@@ -6,7 +6,7 @@ import sanityClient from '../../http/sanity';
 import {apiGetFeaturedCategoriesById} from '../../http/httpGet';
 import {Screens} from '../../Routes/Routes';
 import {useNavigation} from '@react-navigation/native';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 interface Props{
     title: string;

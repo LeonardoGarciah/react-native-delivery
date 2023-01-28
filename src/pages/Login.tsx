@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Screens} from '../Routes/Routes';
 import feedbackServiceImpl from '../serviceImplementation/feedbackServiceImpl/feedbackServiceImpl';
 import {useToast} from 'native-base';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const Login = () => {
 	const [email, setEmail] = useState('');

@@ -3,7 +3,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import {CaretDown, UserCircle} from 'phosphor-react-native';
 import {useNavigation} from '@react-navigation/native';
 import {Screens} from '../../Routes/Routes';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 const Header = ( ) => {
 

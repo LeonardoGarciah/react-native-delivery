@@ -1,6 +1,6 @@
 import React from 'react';
 import {IInputProps, Input} from 'native-base';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 type Props = IInputProps
 const DeliveryInput = (props: Props) => {

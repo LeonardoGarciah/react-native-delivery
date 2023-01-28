@@ -9,7 +9,7 @@ import CartIcon from '../components/CartIcon/CartIcon';
 import {useDispatch} from 'react-redux';
 import {setRestaurant} from '../redux/slices/restaurantSlice';
 import DeliveryImage from '../components/DeliveryImage/DeliveryImage';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const Restaurant = () => {
 	const { params: {

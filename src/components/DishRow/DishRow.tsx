@@ -6,7 +6,7 @@ import {MinusCircle, PlusCircle} from 'phosphor-react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart, removeFromCart, selectCartItems, selectCartItemsWithId} from '../../redux/slices/cartSlice';
 import DeliveryImage from '../DeliveryImage/DeliveryImage';
-import Colors from "../../shared/Colors";
+import Colors from '../../shared/Colors';
 
 interface Props extends Dish{
     id: string;

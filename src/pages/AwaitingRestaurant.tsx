@@ -4,7 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import * as Progress from 'react-native-progress';
 import {useNavigation} from '@react-navigation/native';
 import {Screens} from '../Routes/Routes';
-// @ts-ignore
+
 const AwaitingRestaurant = () => {
 	const navigation = useNavigation();
 

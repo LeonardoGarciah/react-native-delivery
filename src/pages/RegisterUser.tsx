@@ -9,7 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import feedbackServiceImpl from '../serviceImplementation/feedbackServiceImpl/feedbackServiceImpl';
 import {useToast} from 'native-base';
 import {Screens} from '../Routes/Routes';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const RegisterUser = () => {
 	const [email, setEmail] = useState('');

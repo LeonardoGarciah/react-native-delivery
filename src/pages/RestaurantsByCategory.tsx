@@ -6,7 +6,7 @@ import {apiGetFeaturedCategoriesById, apiGetRestaurantsByCategory} from '../http
 import RestaurantByCategoryCard from '../components/RestauratnsByCategory/RestaurantByCategoryCard';
 import {ArrowLeft} from 'phosphor-react-native';
 import {Screens} from '../Routes/Routes';
-import Colors from "../shared/Colors";
+import Colors from '../shared/Colors';
 
 const RestaurantsByCategory = () => {
 	const { params: { category, featuredId, title } } = useRoute();
